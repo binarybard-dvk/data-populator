@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Excel Template Merger</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <div>
+      <h1>Excel Template Merger</h1>
+      <div class="container">
+        <label for="templateInput">Upload Excel Template:</label>
+        <input type="file" id="templateInput" accept=".xlsx" />
+      </div>
+      <div class="container">
+        <label for="jsonData">Enter JSON Data:</label>
+        <textarea id="jsonData" rows="10" cols="50"></textarea>
+      </div>
+      <button id="mergeButton">Merge Data</button>
+    </div>
+
+    <div class="docs">
+      <h3>Docs:</h3>
+      <ul>
+        <li>use {{key in data}} where you want to populate the values.</li>
+        <li>
+          use {{table_row}} where you want to populate the values from array.
+          keep in mind to add the headers
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
