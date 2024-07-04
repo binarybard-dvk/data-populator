@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Features from "./features";
 
-export default function Component() {
+export default async function Component() {
   return (
     <section className="w-full h-screen py-12 md:py-24 lg:py-32 xl:py-48 bg-black">
       <div className="container px-4 md:px-6">

@@ -1,11 +1,9 @@
 import {
   ActivityIcon,
-  AlignEndVerticalIcon,
   CombineIcon,
   MergeIcon,
   MousePointerClickIcon,
   SettingsIcon,
-  SquareActivityIcon,
   WebhookIcon,
 } from "lucide-react";
 
