@@ -22,11 +22,14 @@ function replacePlaceholders(worksheet, data) {
 }
 
 function insertTableData(worksheet, tableStartPlaceholder, tableData) {
-  let tableStartRow;
+  let tableStartRow, headerRow, headerRowNumber;
+
   worksheet.eachRow((row, rowNumber) => {
     row.eachCell((cell, _colNumber) => {
       if (cell.value === tableStartPlaceholder) {
         tableStartRow = rowNumber;
+        headerRow = row;
+        headerRowNumber = rowNumber;
         console.log(
           `Found placeholder '${tableStartPlaceholder}' at row ${rowNumber}`,
         );
@@ -41,11 +44,15 @@ function insertTableData(worksheet, tableStartPlaceholder, tableData) {
         tableStartRow + rowIndex,
         Object.values(rowData),
       );
-      newRow.eachCell((cell, colNumber) => {
+      headerRow.eachCell((cell, colNumber) => {
         const templateCell = worksheet.getRow(tableStartRow).getCell(colNumber);
-        cell.style = { ...templateCell.style };
+        const key = cell.value.trim();
+        newRow.getCell(colNumber).value = rowData[key] ?? '';
+        newRow.getCell(colNumber).style = { ...templateCell.style };
       });
     });
+
+    worksheet.spliceRows(headerRowNumber, 1);
   } else {
     console.error(`Placeholder '${tableStartPlaceholder}' not found.`);
   }
