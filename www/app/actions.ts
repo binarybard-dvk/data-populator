@@ -64,3 +64,30 @@ export async function getUserData() {
     return { ...profile, user_id: data?.user?.id, email: data?.user?.email };
   }
 }
+
+export async function updateProfile({
+  username,
+  website,
+  avatar_url,
+  user_id,
+}: {
+  username: string;
+  website: string;
+  avatar_url: string;
+  user_id: string;
+}) {
+  const supabase = createClient();
+  const updates = {
+    id: user_id,
+    username,
+    website,
+    avatar_url,
+    updated_at: new Date(),
+  };
+
+  const { error } = await supabase.from("profiles").upsert(updates);
+
+  if (error) {
+    throw error;
+  }
+}
