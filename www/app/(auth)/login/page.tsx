@@ -17,7 +17,7 @@ import Link from "next/link";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { emailLogin, oAuthLogin } from "@/app/actions";
-import { toast } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
 
 export const authSchema = z.object({
   email: z.string().min(2, "Email is required"),
